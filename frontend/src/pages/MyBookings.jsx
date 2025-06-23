@@ -15,7 +15,7 @@ const MyBookingsWithApi = () => {
   const [cancelPopupMsg, setCancelPopupMsg] = useState('');
   const navigate = useNavigate();
 
-  const apiEndpoint = 'http://localhost:5000/api/bookings/user';
+  const apiEndpoint = `${import.meta.env.VITE_API_URL}/api/bookings/user`;
 
   useEffect(() => {
     const fetchBookings = async () => {
@@ -82,7 +82,7 @@ const MyBookingsWithApi = () => {
     setCancelingId(bookingId);
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`http://localhost:5000/api/bookings/${bookingId}`, {
+      await axios.delete(`${import.meta.env.VITE_API_URL}/api/bookings/${bookingId}`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       setBookings(bookings => bookings.filter(b => b._id !== bookingId));

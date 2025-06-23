@@ -114,7 +114,7 @@ function SingleListing() {
       }
 
       try {
-        const response = await axios.get(`http://localhost:5000/api/listings/${id}`);
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/listings/${id}`);
         setListing(response.data);
         setLoading(false);
       } catch (err) {
@@ -232,7 +232,7 @@ function SingleListing() {
       };
       try {
         const response = await axios.post(
-          'http://localhost:5000/api/bookings',
+          `${import.meta.env.VITE_API_URL}/api/bookings`,
           bookingData,
           {
             headers: {

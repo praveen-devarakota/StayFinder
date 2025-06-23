@@ -87,7 +87,7 @@ export function AuthProvider({ children }) {
   // Login function accepts email & password, calls backend, sets user & token
   const login = async ({ email, password }) => {
     try {
-      const res = await axios.post('http://localhost:5000/api/users/login', { email, password });
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/users/login`, { email, password });
       const { token: receivedToken, userId, username, email: userEmail } = res.data;
 
       console.log('Login response:', res.data);

@@ -85,7 +85,7 @@ function Loginpage() {
 
     setIsLoading(true);
     try {
-      const res = await axios.post('http://localhost:5000/api/users/signup', formData);
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/users/signup`, formData);
       if (res.data.success) {
         toast.success('Account created successfully!', { duration: 1000 });
         // Auto login after successful signup

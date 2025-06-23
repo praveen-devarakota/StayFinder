@@ -17,7 +17,7 @@ function HomePage() {
         const searchParams = new URLSearchParams(location.search);
         
         const hasSearchParams = Array.from(searchParams.keys()).length > 0;
-        const endpoint = hasSearchParams ? 'http://localhost:5000/api/listings/search' : 'http://localhost:5000/api/listings';
+        const endpoint = hasSearchParams ? `${import.meta.env.VITE_API_URL}/api/listings/search` : `${import.meta.env.VITE_API_URL}/api/listings`;
 
         console.log('API Request Params:', Object.fromEntries(searchParams.entries()));
         const res = await axios.get(endpoint, { params: Object.fromEntries(searchParams.entries()) });
