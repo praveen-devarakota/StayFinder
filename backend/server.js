@@ -14,7 +14,11 @@ const PORT = process.env.PORT || 5000;  // Set default port
 const app = express();
 
 // CORS configuration
-app.use(cors());
+app.use(cors({
+  origin: 'https://stayfinder-frontend.onrender.com', // replace with your actual frontend domain
+  credentials: true  // only if you're using cookies or auth headers
+}));
+
 app.use(express.json());
 
 // Routes
