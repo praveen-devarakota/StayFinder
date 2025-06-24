@@ -25,7 +25,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/admin/users', {
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/admin/users`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -81,7 +81,7 @@ const Dashboard = () => {
   const handleCreateListing = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/api/admin/listings', formData, {
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/admin/listings`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
