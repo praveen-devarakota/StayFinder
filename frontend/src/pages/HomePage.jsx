@@ -3,21 +3,24 @@ import axios from 'axios';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 function HomePage() {
+  // dotenv.config();
   const [listings, setListings] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
   const location = useLocation();
-
+  const backend_uri = import.meta.env.VITE_API_URL;
+  console.log('Backend URI:', backend_uri);
   useEffect(() => {
     const fetchListings = async () => {
       try {
         setLoading(true);
         setError(null);
+        console.log('Fetching listings with search params:', location.search);
         const searchParams = new URLSearchParams(location.search);
-        
+        console.log(import.meta.env.VITE_API_URL)
         const hasSearchParams = Array.from(searchParams.keys()).length > 0;
-        const endpoint = hasSearchParams ? `${import.meta.env.VITE_API_URL}/api/listings/search` : `${import.meta.env.VITE_API_URL}/api/listings`;
+        const endpoint = hasSearchParams ? `${backend_uri}/api/listings/search` : `${backend_uri}/api/listings`;
 
         console.log('API Request Params:', Object.fromEntries(searchParams.entries()));
         const res = await axios.get(endpoint, { params: Object.fromEntries(searchParams.entries()) });
