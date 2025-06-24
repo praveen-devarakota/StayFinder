@@ -15,7 +15,7 @@ const app = express();
 
 // CORS configuration
 app.use(cors({
-  origin: ['https://stayfinder-frontend-v5gf.onrender.com', 'http://localhost:5173'], // replace with your actual frontend domain
+  origin: ['https://stayfinder-frontend-v5gf.onrender.com', 'http://localhost:5173','https://stayfinder-admin-frontend.onrender.com'], // replace with your actual frontend domain
   credentials: true  // only if you're using cookies or auth headers
 }));
 
