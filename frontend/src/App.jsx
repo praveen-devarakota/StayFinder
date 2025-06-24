@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar.jsx';
 import Loginpage from './pages/Loginpage.jsx';
@@ -11,7 +11,7 @@ import Footer from './components/Footer.jsx';
 
 function App() {
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <Toaster
         position="top-right"
         reverseOrder={false}
@@ -35,17 +35,22 @@ function App() {
           },
         }}
       />
+
       <Navbar />
-      <Routes>
-        <Route path="/login" element={<Loginpage/>} />
-        <Route path="/" element={<HomePage/>} />
-        <Route path="/profile" element={<ProfilePage/>}/>
-        <Route path="/listings/:id" element={<SingleListing/>}/>
-        <Route path="/my-bookings" element={<MyBookingsWithApi/>}/>
-      </Routes>
+
+      <main className="flex-grow">
+        <Routes>
+          <Route path="/login" element={<Loginpage />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/listings/:id" element={<SingleListing />} />
+          <Route path="/my-bookings" element={<MyBookingsWithApi />} />
+        </Routes>
+      </main>
+
       <Footer />
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
